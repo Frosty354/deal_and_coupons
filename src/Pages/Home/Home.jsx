@@ -8,7 +8,9 @@ function Home({ loggedIn }) {
       <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid d-flex justify-content-between">
           <img src="" alt="" width="30" height="24" />
-          <Button>{loggedIn ? "Signout" : "Sign In"}</Button>
+          <Button danger={loggedIn ? true : false}>
+            {loggedIn ? "Signout" : "Sign In"}
+          </Button>
         </div>
       </nav>
       <CouponCard />
