@@ -3,6 +3,13 @@ import CouponCard from "../../Components/couponCard/CouponCard";
 import { Button } from "antd";
 
 function Home({ loggedIn }) {
+  let couponData = [
+    {
+      title: "",
+      desc: "",
+      image: "",
+    },
+  ];
   return (
     <div>
       <nav class="navbar navbar-light bg-dark">

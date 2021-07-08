@@ -7,6 +7,7 @@ function Login({ handleLogin }) {
     // add your validation here, if success set login true else show error
     handleLogin(true);
   };
+
   return (
     <div
       style={{ minHeight: "100vh" }}
@@ -16,7 +17,8 @@ function Login({ handleLogin }) {
         <h2 className="text-info">Login Page</h2>
         <Input placeholder="username" className="my-4" />
         <Input.Password placeholder="password" className="my-4" />
-        <Button onClick={handleLoginClick} type="primary">
+        <Button type="primary">
+          <Link to="/" />
           Login
         </Button>
       </div>
