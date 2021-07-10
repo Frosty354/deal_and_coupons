@@ -11,7 +11,14 @@ import Cart from "./Pages/Cart/Cart";
 function App() {
   const [login, setLogin] = useState(false);
   return (
-    <div className="App">
+    <div
+      style={{
+        backgroundImage: `url("https://source.unsplash.com/random)`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="App"
+    >
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={(props) => <Home login={login} />} />
@@ -32,6 +39,8 @@ function App() {
           />
         </Switch>
       </BrowserRouter>
+      <hr />
+      <h2 className="text-light text-center">THIS IS THE FOOTER PAGE</h2>
     </div>
   );
 }

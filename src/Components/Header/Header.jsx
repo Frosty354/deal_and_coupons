@@ -7,8 +7,8 @@ function Header({ login }) {
   return (
     <nav class="navbar navbar-light bg-dark">
       <div class="container-fluid d-flex justify-content-between">
-        <div className="text-light">
-          Deals & Coupons (Icon)
+        <div>
+          <h4 className="text-light">Deals & Coupons (Icon)</h4>
           {/* <img src="" className="img-fluid" /> */}
         </div>
         <Button danger={login ? true : false}>

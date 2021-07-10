@@ -17,6 +17,7 @@ function CouponCard({ login, title, desc }) {
   return (
     <Card
       hoverable
+      className="my-5"
       style={{ width: 240 }}
       cover={<img alt="example" src="https://source.unsplash.com/random" />}
     >
