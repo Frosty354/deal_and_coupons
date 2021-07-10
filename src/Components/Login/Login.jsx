@@ -1,13 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import { Input, Button } from "antd";
 
-function Login({ handleLogin }) {
-  const handleLoginClick = () => {
-    // add your validation here, if success set login true else show error
-    handleLogin(true);
-  };
-
+function Login({ setLogin, login }) {
   return (
     <div
       style={{ minHeight: "100vh" }}
@@ -17,9 +12,15 @@ function Login({ handleLogin }) {
         <h2 className="text-info">Login Page</h2>
         <Input placeholder="username" className="my-4" />
         <Input.Password placeholder="password" className="my-4" />
-        <Button type="primary">
-          <Link to="/" />
-          Login
+        <small>
+          Not Signed Up Yet ? click
+          <span>
+            <Link to="/signup">Here</Link>
+          </span>
+          to Sign Up
+        </small>
+        <Button onClick={setLogin(true)} type="primary">
+          <Link to="/">Login</Link>
         </Button>
       </div>
     </div>

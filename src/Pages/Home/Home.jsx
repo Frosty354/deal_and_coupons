@@ -1,26 +1,31 @@
 import React from "react";
 import CouponCard from "../../Components/couponCard/CouponCard";
 import { Button } from "antd";
+import Header from "../../Components/Header/Header";
 
-function Home({ loggedIn }) {
-  let couponData = [
-    {
-      title: "",
-      desc: "",
-      image: "",
-    },
-  ];
+function Home({ login, ...rest }) {
+  console.log(rest, "is reset");
+  console.log(login, "guigiu");
   return (
     <div>
-      <nav class="navbar navbar-light bg-dark">
-        <div class="container-fluid d-flex justify-content-between">
-          <img src="" alt="" width="30" height="24" />
-          <Button danger={loggedIn ? true : false}>
-            {loggedIn ? "Signout" : "Sign In"}
-          </Button>
+      <Header login={login} />
+      <div className="container d-flex col-12 flex-wrap ">
+        <div className="col-md-3">
+          <CouponCard title="some title" desc="some desc" login={login} />
         </div>
-      </nav>
-      <CouponCard />
+        <div className="col-md-3">
+          <CouponCard title="some title" desc="some desc" login={login} />
+        </div>
+        <div className="col-md-3">
+          <CouponCard title="some titlec 2" desc="some desc" login={login} />
+        </div>
+        <div className="col-md-3">
+          <CouponCard title="some title 3" desc="some desc" login={login} />
+        </div>
+        <div className="col-md-3">
+          <CouponCard title="some title 3" desc="some desc" login={login} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -21,7 +21,16 @@ function SignUp() {
             visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
           }
         />
-        <Button type="primary">SignUp</Button>
+        <small>
+          Already Singned Up ? click
+          <span>
+            <Link to="/login">Here</Link>
+          </span>
+          to Log in.
+        </small>
+        <Button type="primary">
+          <Link to="/login">Sign Up</Link>
+        </Button>
       </div>
     </div>
   );
