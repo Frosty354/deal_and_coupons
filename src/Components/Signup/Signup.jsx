@@ -24,11 +24,11 @@ function SignUp() {
         <small>
           Already Singned Up ? click
           <span>
-            <Link to="/login">Here</Link>
+            <Link to="/login"> here </Link>
           </span>
           to Log in.
         </small>
-        <Button type="primary">
+        <Button className="d-flex m-auto mt-2" type="primary">
           <Link to="/login">Sign Up</Link>
         </Button>
       </div>

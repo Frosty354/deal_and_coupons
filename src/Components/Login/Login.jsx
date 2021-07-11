@@ -15,11 +15,16 @@ function Login({ setLogin, login }) {
         <small>
           Not Signed Up Yet ? click
           <span>
-            <Link to="/signup">Here</Link>
+            <Link to="/signup"> here </Link>
           </span>
           to Sign Up
         </small>
-        <Button onClick={setLogin(true)} type="primary">
+        <br />
+        <Button
+          className="d-flex m-auto mt-2"
+          onClick={setLogin(true)}
+          type="primary"
+        >
           <Link to="/">Login</Link>
         </Button>
       </div>
