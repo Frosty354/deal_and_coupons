@@ -7,21 +7,16 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Home from "./Pages/Home/Home";
 import Cart from "./Pages/Cart/Cart";
+import About from "./Pages/About/About";
 
 function App() {
   const [login, setLogin] = useState(false);
   return (
-    <div
-      style={{
-        backgroundImage: `url("https://source.unsplash.com/random)`,
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-      className="App"
-    >
+    <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={(props) => <Home login={login} />} />
+          <Route exact path="/" component={() => <Home login={login} />} />
+          <Route exact path="/giftcard" component={Home} />
           <Route
             exact
             path="/signup"
@@ -31,6 +26,11 @@ function App() {
             exact
             path="/login"
             component={() => <Login login={login} setLogin={setLogin} />}
+          />
+          <Route
+            exact
+            path="/about"
+            component={() => <About login={login} setLogin={setLogin} />}
           />
           <Route
             exact
