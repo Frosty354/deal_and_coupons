@@ -12,7 +12,9 @@ function Login({ setLogin, login }) {
   const loginHandler = () => {
     let flag = true;
     //logic to be added here
+
     if (flag) {
+      setLogin(true);
       history.push("/");
     }
   };

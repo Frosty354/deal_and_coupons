@@ -4,18 +4,20 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 
-function CouponCard({ login, title, desc, code }) {
-  const history = useHistory();
+function GiftCard({ login, title, desc, addToCart, type }) {
   const { Meta } = Card;
-  const handleShowCoupon = () => {
-    if (login) {
-      swal("code- " + code, "Yaay! you got your coupon code", "success");
-    } else {
-      swal("Error", "You must login first to view the code", "error");
-      history.push("/login");
+  const handleAddToCart = () => {
+    if (!login) {
+      swal("Error", "You Have Not logged In Yet", "error");
+      return;
     }
+    addToCart({
+      title,
+      desc,
+      type,
+    });
+    swal("Success", "Added TO Cart", "success");
   };
-
   return (
     <Card
       hoverable
@@ -24,11 +26,11 @@ function CouponCard({ login, title, desc, code }) {
       cover={<img alt="example" src="https://via.placeholder.com/150" />}
     >
       <Meta title={title} description={desc} />
-      <button className="btn btn-success mt-4" onClick={handleShowCoupon}>
-        Show Code
+      <button className="btn btn-success mt-4" onClick={handleAddToCart}>
+        Add To Cart
       </button>
     </Card>
   );
 }
 
-export default CouponCard;
+export default GiftCard;

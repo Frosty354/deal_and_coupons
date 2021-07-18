@@ -11,31 +11,58 @@ import About from "./Pages/About/About";
 
 function App() {
   const [login, setLogin] = useState(false);
+  const [cartData, setCartData] = useState([]);
+
+  const authHandler = (flag) => {
+    if (flag) {
+      setLogin(true);
+    } else {
+      setLogin(false);
+    }
+  };
+
+  const handleAddToCart = (item) => {
+    setCartData([...cartData, item]);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={() => <Home login={login} />} />
-          <Route exact path="/giftcard" component={Home} />
+          <Route
+            exact
+            path="/giftcard"
+            component={() => (
+              <Home login={login} addToCart={handleAddToCart} isGiftCard />
+            )}
+          />
           <Route
             exact
             path="/signup"
-            component={() => <Signup login={login} setLogin={setLogin} />}
+            component={() => <Signup login={login} setLogin={authHandler} />}
           />
           <Route
             exact
             path="/login"
-            component={() => <Login login={login} setLogin={setLogin} />}
+            component={() => <Login login={login} setLogin={authHandler} />}
           />
           <Route
             exact
             path="/about"
-            component={() => <About login={login} setLogin={setLogin} />}
+            component={() => <About login={login} />}
           />
           <Route
             exact
             path="/cart"
-            component={() => <Cart login={login} setLogin={setLogin} />}
+            component={() => (
+              <Cart
+                removeFromCart={() => alert("removed")}
+                login={login}
+                setLogin={setLogin}
+                data={cartData}
+              />
+            )}
           />
         </Switch>
       </BrowserRouter>
