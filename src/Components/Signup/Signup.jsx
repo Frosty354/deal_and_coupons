@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import { Redirect, Link, useHistory } from "react-router-dom";
 import { Input, Button, Space } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import axios from 'axios'
 
 function SignUp() {
   const history = useHistory();
   const [user, setUser] = useState({
     email: "",
     password: "",
+    verifyPassword:""
   });
 
-  const signUpHandler = () => {
+  const signUpHandler = async () => {
     // login to be added here
     let flag = true;
+    let data = await axios.post("http://localhost:8682/signup",{
+      username:user.email,
+      password:user.password
+    })
+    console.log(data)
     //logic to be added here
     if (flag) {
       history.push("/login");
@@ -27,7 +34,7 @@ function SignUp() {
   return (
     <div
       style={{ minHeight: "100vh" }}
-      className="container d-flex justify-content-center align-items-center rounded"
+      className= "container d-flex justify-content-center align-items-center rounded"
     >
       <div className="col-5 shadow shadow-xl p-4 bg-light">
         <h2 className="text-info">SignUp Page</h2>
@@ -35,13 +42,13 @@ function SignUp() {
           onChange={(e) => onChangeInputHandler(e)}
           name="email"
           value={user.email}
-          placeholder="email"
+          placeholder="Email Address"
           className="my-2"
         />
-        <Input.Password className="my-2" placeholder="input password" />
-        <Input.Password
-          className="my-2"
-          placeholder="confirm password"
+        <Input.Password  name="verifyPassword"
+        onChange={(e) => onChangeInputHandler(e)}
+          value={user.verifyPassword}  className="my-2" placeholder="Input Password" />
+        <Input.Password className="my-2" placeholder="Confirm Password"
           name="password"
           value={user.password}
           onChange={(e) => onChangeInputHandler(e)}
@@ -50,7 +57,7 @@ function SignUp() {
           }
         />
         <small>
-          Already Singned Up ? click
+          Already Signed Up ? click
           <span>
             <Link to="/login"> here </Link>
           </span>

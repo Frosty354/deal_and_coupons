@@ -23,6 +23,17 @@ const tempGiftCardData = [
     desc: "",
     type: "Amazon",
   },
+  {
+    id: 4,
+    title: "Swiggy 1000rs gift card",
+    desc: "",
+    type: "Swiggy",
+  }, {
+    id: 4,
+    title: "Zomato 1000rs gift card",
+    desc: "",
+    type: "Zomato",
+  },
 ];
 const tempCouponData = [
   {

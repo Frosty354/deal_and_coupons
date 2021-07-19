@@ -9,7 +9,7 @@ function CouponCard({ login, title, desc, code }) {
   const { Meta } = Card;
   const handleShowCoupon = () => {
     if (login) {
-      swal("code- " + code, "Yaay! you got your coupon code", "success");
+      swal(code, "Yaay! you got your coupon code", "success");
     } else {
       swal("Error", "You must login first to view the code", "error");
       history.push("/login");

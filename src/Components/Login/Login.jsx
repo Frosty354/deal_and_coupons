@@ -35,14 +35,13 @@ function Login({ setLogin, login }) {
           onChange={(e) => onChangeInputHandler(e)}
           name="email"
           value={user.email}
-          placeholder="username"
+          placeholder="Email Address"
           className="my-4"
         />
-        <Input.Password
-          onChange={(e) => onChangeInputHandler(e)}
+        <Input.Password onChange={(e) => onChangeInputHandler(e)}
           name="password"
           value={user.password}
-          placeholder="password"
+          placeholder="Password"
           className="my-4"
         />
         <small>

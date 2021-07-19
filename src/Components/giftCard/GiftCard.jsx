@@ -8,7 +8,7 @@ function GiftCard({ login, title, desc, addToCart, type }) {
   const { Meta } = Card;
   const handleAddToCart = () => {
     if (!login) {
-      swal("Error", "You Have Not logged In Yet", "error");
+      swal("Error", "You have not logged in yet", "error");
       return;
     }
     addToCart({

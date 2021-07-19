@@ -67,7 +67,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       <hr />
-      <h2 className="text-light text-center">THIS IS THE FOOTER PAGE</h2>
+      
     </div>
   );
 }
