@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CouponCard from "../../Components/couponCard/CouponCard";
 import { Button } from "antd";
 import Header from "../../Components/Header/Header";
 import GiftCard from "../../Components/giftCard/GiftCard";
+import axios from "axios";
 
 const tempGiftCardData = [
   {
@@ -35,47 +36,51 @@ const tempGiftCardData = [
     type: "Zomato",
   },
 ];
-const tempCouponData = [
-  {
-    id: 1,
-    title: "Swiggy 40% off",
-    desc: "Swiggy 50",
-    code: "swiggy-40",
-  },
-  {
-    id: 2,
-    title: "Swiggy Off",
-    desc: "Buy one get on free",
-    code: "swiggy-free",
-  },
-  {
-    id: 3,
-    title: "Rapido- first free ride",
-    desc: "Free ride",
-    code: "rapid-50",
-  },
-  {
-    id: 4,
-    title: "Uber : 50% off, first ride ",
-    desc: "Uber 50",
-    code: "Get-Cab",
-  },
-];
-
+const BASE_URL = "http://localhost:8999";
 function Home({ login, addToCart, isGiftCard }) {
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/coupons/all`)
+      .then((res) => {
+          console.log(res);
+
+        setAllProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/giftcards/all`)
+      .then((res) => {
+          console.log(res);
+
+        setAllProducts(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+
   return (
     <div>
       <Header login={login} />
       <div className="container d-flex col-12 flex-wrap ">
         {isGiftCard &&
-          tempGiftCardData.map((ele) => {
+          allProducts.map((ele) => {
             return (
               <div className="col-md-3">
                 <GiftCard
                   addToCart={addToCart}
-                  title={ele.title}
-                  desc={ele.desc}
-                  id={ele.id}
+                  title={ele.gifttype}
+                  desc={ele.giftdesc}
+                  price={ele.price}
+                  id={ele._id}
                   login={login}
                   type={ele.type}
                 />
@@ -83,14 +88,15 @@ function Home({ login, addToCart, isGiftCard }) {
             );
           })}
         {!isGiftCard &&
-          tempCouponData.map((ele) => {
+          allProducts.map((ele) => {
             return (
               <div className="col-md-3">
                 <CouponCard
-                  title={ele.title}
-                  desc={ele.desc}
-                  code={ele.code}
-                  id={ele.id}
+                  title={ele.coupontype}
+                  desc={ele.coupondesc}
+                  code={ele.couponcode}
+                  id={ele._id}
+                  image={ele.image}
                   login={login}
                 />
               </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect, Link, useHistory } from "react-router-dom";
 import { Input, Button } from "antd";
-
+import axios from 'axios'
 function Login({ setLogin, login }) {
   const history = useHistory();
   const [user, setUser] = useState({
@@ -9,16 +9,25 @@ function Login({ setLogin, login }) {
     password: "",
   });
 
-  const loginHandler = () => {
+  const loginHandler = async () => {
     let flag = true;
+    let data = await axios.post("http://localhost:8682/login",{
+      username:user.email,
+      password:user.password
+    })
+    
+    
+  
     //logic to be added here
+    
+
 
     if (flag) {
       setLogin(true);
       history.push("/");
     }
   };
-
+  
   const onChangeInputHandler = (e) => {
     console.log(e, "is e");
     //e == event

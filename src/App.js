@@ -8,6 +8,7 @@ import Signup from "./Components/Signup/Signup";
 import Home from "./Pages/Home/Home";
 import Cart from "./Pages/Cart/Cart";
 import About from "./Pages/About/About";
+import Admin from "./Pages/Admin/Admin";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -63,6 +64,11 @@ function App() {
                 data={cartData}
               />
             )}
+          />
+          <Route
+            exact
+            path="/admin"
+            component={() => <Admin login={login} />}
           />
         </Switch>
       </BrowserRouter>

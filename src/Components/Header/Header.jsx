@@ -42,6 +42,11 @@ function Header({ login }) {
               Cart
             </Link>
           </li>
+          <li class="nav-item">
+            <Link to="/admin" class="nav-link">
+              Admin
+            </Link>
+          </li>
         </ul>
         <Button
           style={{ marginLeft: "auto", marginRight: "2%" }}

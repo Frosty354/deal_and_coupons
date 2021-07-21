@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 
-function CouponCard({ login, title, desc, code }) {
+function CouponCard({ login, title, desc, code,image }) {
   const history = useHistory();
   const { Meta } = Card;
   const handleShowCoupon = () => {
@@ -16,12 +16,13 @@ function CouponCard({ login, title, desc, code }) {
     }
   };
 
+  console.log(image);
   return (
     <Card
       hoverable
       className="my-5"
       style={{ width: 240 }}
-      cover={<img alt="example" src="https://via.placeholder.com/150" />}
+      cover={<img alt="example" src={`${image || "https://via.placeholder.com/150" }`} />}
     >
       <Meta title={title} description={desc} />
       <button className="btn btn-success mt-4" onClick={handleShowCoupon}>

@@ -21,6 +21,7 @@ function Cart({ data }) {
               <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
+              <th scope="col">Price</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -32,9 +33,10 @@ function Cart({ data }) {
                     <th scope="row">{idx + 1}</th>
                     <td>{ele.title}</td>
                     <td>{ele.desc}</td>
+                    <td>{ele.price}</td>
                     <td>
-                      <button disabled="true" className="btn btn-danger">
-                        remove
+                      <button className="btn btn-danger">
+                        Remove
                       </button>
                     </td>
                   </tr>
