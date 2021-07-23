@@ -5,37 +5,7 @@ import Header from "../../Components/Header/Header";
 import GiftCard from "../../Components/giftCard/GiftCard";
 import axios from "axios";
 
-const tempGiftCardData = [
-  {
-    id: 1,
-    title: "amazon 100rs gift card",
-    desc: "",
-    type: "Amazon",
-  },
-  {
-    id: 2,
-    title: "amazon 500rs gift card",
-    desc: "",
-    type: "Flipkart",
-  },
-  {
-    id: 3,
-    title: "amazon 1000rs gift card",
-    desc: "",
-    type: "Amazon",
-  },
-  {
-    id: 4,
-    title: "Swiggy 1000rs gift card",
-    desc: "",
-    type: "Swiggy",
-  }, {
-    id: 4,
-    title: "Zomato 1000rs gift card",
-    desc: "",
-    type: "Zomato",
-  },
-];
+
 const BASE_URL = "http://localhost:8999";
 function Home({ login, addToCart, isGiftCard }) {
   const [allProducts, setAllProducts] = useState([]);
@@ -80,6 +50,7 @@ function Home({ login, addToCart, isGiftCard }) {
                   title={ele.gifttype}
                   desc={ele.giftdesc}
                   price={ele.price}
+                  image={ele.image}
                   id={ele._id}
                   login={login}
                   type={ele.type}

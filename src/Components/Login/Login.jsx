@@ -15,8 +15,7 @@ function Login({ setLogin, login }) {
       username:user.email,
       password:user.password
     })
-    
-    
+    console.log(data)
   
     //logic to be added here
     

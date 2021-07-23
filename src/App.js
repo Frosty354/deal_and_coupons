@@ -68,7 +68,7 @@ function App() {
           <Route
             exact
             path="/admin"
-            component={() => <Admin login={login} />}
+            component={() => <Admin login={login}  setLogin={authHandler}/>}
           />
         </Switch>
       </BrowserRouter>

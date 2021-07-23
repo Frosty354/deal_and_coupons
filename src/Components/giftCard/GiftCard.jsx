@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 
-function GiftCard({ login, title, desc, addToCart, type }) {
+function GiftCard({ login, title, desc, addToCart, type,image }) {
   const { Meta } = Card;
   const handleAddToCart = () => {
     if (!login) {
@@ -18,12 +18,13 @@ function GiftCard({ login, title, desc, addToCart, type }) {
     });
     swal("Success", "Added TO Cart", "success");
   };
+  console.log(image);
   return (
     <Card
       hoverable
       className="my-5"
       style={{ width: 240 }}
-      cover={<img alt="example" src="https://via.placeholder.com/150" />}
+      cover={<img alt="example" src={`${image || "https://via.placeholder.com/150" }`} />}
     >
       <Meta title={title} description={desc} />
       <button className="btn btn-success mt-4" onClick={handleAddToCart}>
