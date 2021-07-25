@@ -1,19 +1,20 @@
 import React from "react";
 import Header from "../../Components/Header/Header";
 
-function Cart({ data }) {
+function Cart({ data,login,removeCart }) {
   console.log(data, "is data");
   if (!data.length) {
     return (
       <div>
-        <Header />
+        <Header login={login}/>
         <h2 className="text-info text-center">Cart is Empty</h2>;
       </div>
     );
   }
+  
   return (
-    <>
-      <Header />
+    <>let k=0;
+      <Header login={login} />
       <div className="bg-light d-flex m-auto mt-4 col-6">
         <table class="table table-dark">
           <thead>
@@ -21,7 +22,7 @@ function Cart({ data }) {
               <th scope="col">#</th>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
-              <th scope="col">Price</th>
+              <th scope="col">Price Rs.</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -34,15 +35,21 @@ function Cart({ data }) {
                     <td>{ele.title}</td>
                     <td>{ele.desc}</td>
                     <td>{ele.price}</td>
-                    <td>
-                      <button className="btn btn-danger">
+                    <td>          
+                      <button className="btn btn-danger" onClick={()=> removeCart(ele.id)}>
                         Remove
                       </button>
+                      
                     </td>
                   </tr>
                 );
               })}
           </tbody>
+          <tr> 
+              <td style={{color: "black"}}>Total:</td>
+              <td></td>
+               <button className="btn btn-primary" >Checkout</button>
+          </tr>
         </table>
       </div>
     </>

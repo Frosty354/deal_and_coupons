@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 
-function GiftCard({ login, title, desc, addToCart, type,image }) {
+function GiftCard({ login, title, desc, addToCart, type,image,id,price }) {
   const { Meta } = Card;
   const handleAddToCart = () => {
     if (!login) {
@@ -12,9 +12,11 @@ function GiftCard({ login, title, desc, addToCart, type,image }) {
       return;
     }
     addToCart({
+      id,
       title,
       desc,
       type,
+      price
     });
     swal("Success", "Added TO Cart", "success");
   };

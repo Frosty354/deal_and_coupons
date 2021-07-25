@@ -10,22 +10,18 @@ const BASE_URL = "http://localhost:8999";
 function Home({ login, addToCart, isGiftCard }) {
   const [allProducts, setAllProducts] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${BASE_URL}/coupons/all`)
-      .then((res) => {
-          console.log(res);
-
-        setAllProducts(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  let url
+  if(isGiftCard)
+  {
+    url="/giftcards/all"
+  }
+  else{
+    url="/coupons/all"
+  }
 
   useEffect(() => {
     axios
-      .get(`${BASE_URL}/giftcards/all`)
+      .get(`${BASE_URL}${url}`)
       .then((res) => {
           console.log(res);
 
@@ -51,7 +47,7 @@ function Home({ login, addToCart, isGiftCard }) {
                   desc={ele.giftdesc}
                   price={ele.price}
                   image={ele.image}
-                  id={ele._id}
+                  id={ele.giftid}
                   login={login}
                   type={ele.type}
                 />
@@ -66,7 +62,7 @@ function Home({ login, addToCart, isGiftCard }) {
                   title={ele.coupontype}
                   desc={ele.coupondesc}
                   code={ele.couponcode}
-                  id={ele._id}
+                  id={ele.giftid}
                   image={ele.image}
                   login={login}
                 />

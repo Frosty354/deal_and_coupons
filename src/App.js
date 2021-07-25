@@ -13,6 +13,7 @@ import Admin from "./Pages/Admin/Admin";
 function App() {
   const [login, setLogin] = useState(false);
   const [cartData, setCartData] = useState([]);
+  const [admin, setAdmin] = useState(false);
 
   const authHandler = (flag) => {
     if (flag) {
@@ -22,9 +23,25 @@ function App() {
     }
   };
 
+  const adminHandler = (flag) => {
+    if (flag) {
+      setAdmin(true);
+    } else {
+      setAdmin(false);
+    }
+  };
+  console.log(cartData);
   const handleAddToCart = (item) => {
     setCartData([...cartData, item]);
   };
+
+  const handleRemoveCart = (id) => {
+   console.log(id);
+   let filteredCart = cartData.filter((ele)=>ele.id !== id)
+   console.log(filteredCart);
+   setCartData(filteredCart); 
+  };
+
 
   return (
     <div className="App">
@@ -58,7 +75,7 @@ function App() {
             path="/cart"
             component={() => (
               <Cart
-                removeFromCart={() => alert("removed")}
+                removeCart={ handleRemoveCart}
                 login={login}
                 setLogin={setLogin}
                 data={cartData}
@@ -68,8 +85,11 @@ function App() {
           <Route
             exact
             path="/admin"
-            component={() => <Admin login={login}  setLogin={authHandler}/>}
+            component={() => <Admin login={login}  setLogin={authHandler} isAdmin/>}
           />
+
+
+
         </Switch>
       </BrowserRouter>
       <hr />
